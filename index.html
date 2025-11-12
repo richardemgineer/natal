@@ -2,13 +2,15 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natal na Casa dos Dinhos - Convite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎄 Natal na Casa dos Dinhos 🎄</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
         }
 
         body {
@@ -16,11 +18,13 @@
             background: linear-gradient(135deg, #0f4c27 0%, #1a6e3e 50%, #c41e3a 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
             position: relative;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* Neve Caindo */
@@ -38,7 +42,7 @@
             position: fixed;
             top: -10px;
             color: white;
-            font-size: 1em;
+            font-size: 1.5em;
             opacity: 0.8;
             z-index: 1;
             user-select: none;
@@ -55,7 +59,7 @@
         /* Emojis Flutuantes */
         .floating-emoji {
             position: fixed;
-            font-size: 3em;
+            font-size: 2.5em;
             opacity: 0.15;
             animation: float 6s ease-in-out infinite;
             z-index: 0;
@@ -67,60 +71,290 @@
             50% { transform: translateY(30px); }
         }
 
-        /* Convite Natalino */
-        .convite-header {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 40px 30px;
-            max-width: 600px;
+        /* Container Principal */
+        .container {
             width: 100%;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
             z-index: 10;
             position: relative;
-            border: 3px solid #c41e3a;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            border: 4px solid #c41e3a;
+        }
+
+        /* Cabeçalho do Convite */
+        .convite-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #c41e3a;
+        }
+
+        .convite-header .decoracao {
+            font-size: 1.8em;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
         }
 
         .convite-header h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             color: #0f4c27;
-            margin: 15px 0;
+            margin: 10px 0;
             text-shadow: 2px 2px 4px rgba(196, 30, 58, 0.2);
             animation: pulse 2s ease-in-out infinite;
         }
 
-        .subtitulo {
-            font-size: 1.3em;
+        .convite-header p {
+            font-size: 1em;
             color: #c41e3a;
             font-style: italic;
-            margin: 10px 0;
             font-weight: bold;
+            margin: 8px 0;
         }
 
         .endereco {
-            font-size: 1.2em;
-            color: #0f4c27;
-            margin: 15px 0;
-            font-weight: bold;
-        }
-
-        .convite-header p {
             font-size: 1.1em;
-            color: #333;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-
-        .convite-decoracao {
-            text-align: center;
-            font-size: 2em;
-            margin: 15px 0;
-            letter-spacing: 5px;
+            color: #0f4c27;
+            margin-top: 10px;
+            font-weight: bold;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
+        }
+
+        /* Árvore de Natal Interativa */
+        .tree-section {
+            text-align: center;
+        }
+
+        .tree-section h2 {
+            color: #0f4c27;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Visualização da Árvore */
+        .tree-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a3a52 0%, #0f2e42 100%);
+            border-radius: 15px;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 1;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 3px solid #c41e3a;
+        }
+
+        /* Neve ao pé da árvore */
+        .tree-visual::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+            border-radius: 0 0 15px 15px;
+            pointer-events: none;
+        }
+
+        /* SVG da Árvore */
+        .tree-svg {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+        }
+
+        /* Luzes piscantes */
+        .light {
+            animation: blink 1.5s infinite;
+        }
+
+        .light-red { fill: #ff3333; }
+        .light-blue { fill: #3366ff; }
+        .light-yellow { fill: #ffdd00; }
+        .light-green { fill: #00dd00; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Enfeites clicáveis */
+        .ornament {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .ornament:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.6));
+        }
+
+        .ornament:active {
+            animation: click-bounce 0.3s ease;
+        }
+
+        @keyframes click-bounce {
+            0%, 100% { transform: scale(1.2); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Formulário */
+        .form-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #0f4c27;
+            margin-bottom: 20px;
+        }
+
+        .form-section h3 {
+            color: #0f4c27;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0f4c27;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #0f4c27;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #c41e3a;
+            box-shadow: 0 0 10px rgba(196, 30, 58, 0.3);
+            transform: scale(1.02);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(196, 30, 58, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0px);
+        }
+
+        /* Lista de Fotos */
+        .photos-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 10px;
+            padding: 15px;
+            background: #fff8e1;
+            border-radius: 10px;
+            border: 2px dashed #ffb300;
+            min-height: 60px;
+        }
+
+        .photo-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid gold;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.6);
+        }
+
+        .photo-item .remove-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .photo-item:hover .remove-btn {
+            display: flex;
         }
 
         /* Footer */
@@ -129,41 +363,73 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(20, 20, 60, 0.9);
+            background: rgba(20, 20, 60, 0.95);
             color: #fff;
             text-align: center;
-            padding: 15px 20px;
-            font-size: 0.9em;
+            padding: 12px 15px;
+            font-size: 0.85em;
             border-top: 3px solid #c41e3a;
             z-index: 5;
         }
 
+        /* Animação de comemoração */
+        .celebration {
+            position: fixed;
+            font-size: 3em;
+            animation: celebrate 0.6s ease-in-out;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes celebrate {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+
         /* Responsivo */
-        @media (max-width: 768px) {
-            .convite-header {
-                padding: 30px 20px;
-                border-radius: 10px;
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+                border-radius: 15px;
+                margin: 10px;
+                margin-bottom: 70px;
             }
 
             .convite-header h1 {
-                font-size: 2em;
+                font-size: 1.6em;
             }
 
-            .subtitulo {
+            .convite-header .decoracao {
+                font-size: 1.5em;
+                letter-spacing: 3px;
+            }
+
+            .tree-section h2 {
+                font-size: 1.3em;
+            }
+
+            .tree-visual {
+                max-width: 280px;
+                padding: 20px 15px;
+            }
+
+            .form-section {
+                padding: 15px;
+            }
+
+            .form-section h3 {
                 font-size: 1.1em;
             }
 
-            .endereco {
-                font-size: 1em;
+            button {
+                min-width: 100px;
+                padding: 10px 12px;
+                font-size: 0.9em;
             }
 
-            .convite-header p {
-                font-size: 1em;
-            }
-
-            .convite-decoracao {
-                font-size: 1.5em;
-                letter-spacing: 3px;
+            footer {
+                font-size: 0.8em;
+                padding: 10px 12px;
             }
 
             .floating-emoji {
@@ -171,69 +437,43 @@
             }
         }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .convite-header {
-                padding: 20px 15px;
-                margin-bottom: 80px;
+        @media (max-width: 400px) {
+            .container {
+                padding: 12px;
+                margin: 8px;
             }
 
             .convite-header h1 {
-                font-size: 1.5em;
-            }
-
-            .subtitulo {
-                font-size: 0.95em;
-            }
-
-            .endereco {
-                font-size: 0.9em;
+                font-size: 1.4em;
             }
 
             .convite-header p {
                 font-size: 0.9em;
             }
 
-            .convite-decoracao {
-                font-size: 1.2em;
-                letter-spacing: 2px;
+            .endereco {
+                font-size: 0.95em;
+            }
+
+            .tree-visual {
+                max-width: 240px;
+                padding: 15px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 0.85em;
+                min-width: 90px;
+            }
+
+            .form-group input {
+                font-size: 16px;
             }
 
             footer {
-                font-size: 0.8em;
-                padding: 10px 15px;
+                font-size: 0.75em;
+                padding: 8px 10px;
             }
-        }
-
-        footer {
-            background: rgba(20, 20, 60, 0.9);
-            color: #fff;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-            border-top: 5px solid #c41e3a;
-            font-size: 1.2em;
-        }
-
-        .celebration {
-            text-align: center;
-            font-size: 3em;
-            animation: bounce 0.6s ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .convite-decoracao {
-            text-align: center;
-            font-size: 2em;
-            margin: 20px 0;
-            letter-spacing: 10px;
         }
     </style>
 </head>
@@ -242,80 +482,67 @@
     <div id="snowContainer"></div>
 
     <!-- Emojis flutuantes -->
-    <div class="floating-emoji" style="top: 10%; left: 10%; animation-delay: 0s;">🎄</div>
-    <div class="floating-emoji" style="top: 30%; right: 15%; animation-delay: 2s;">🎁</div>
-    <div class="floating-emoji" style="top: 50%; left: 5%; animation-delay: 4s;">⛄</div>
-    <div class="floating-emoji" style="top: 70%; right: 10%; animation-delay: 1s;">🔔</div>
-    <div class="floating-emoji" style="top: 20%; right: 5%; animation-delay: 3s;">❄️</div>
+    <div class="floating-emoji" style="top: 5%; left: 8%;">🎄</div>
+    <div class="floating-emoji" style="top: 20%; right: 10%;">🎁</div>
+    <div class="floating-emoji" style="top: 40%; left: 5%;">⛄</div>
+    <div class="floating-emoji" style="top: 60%; right: 8%;">🔔</div>
+    <div class="floating-emoji" style="top: 30%; right: 3%;">❄️</div>
 
-    <!-- CONVITE NATALINO -->
-    <div class="convite-header">
-        <div class="convite-decoracao">🎄 ✨ 🎅 ✨ 🎄</div>
-        <h1>Natal na Casa dos Dinhos</h1>
-        <div class="subtitulo">Um Convite Muito Especial</div>
-        <div class="endereco">🏘️ Condomínio Hollyhood 🏘️</div>
-        <p style="margin-top: 20px; font-size: 1.1em;">
-            Você está convidado para celebrar a magia do Natal!
-        </p>
-        <div class="convite-decoracao" style="margin-top: 20px;">✨ 🎁 ❄️ 🎁 ✨</div>
-    </div>
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- Cabeçalho do Convite -->
+        <div class="convite-header">
+            <div class="decoracao">🎄 ✨ 🎅 ✨ 🎄</div>
+            <h1>Natal na Casa dos Dinhos</h1>
+            <p>Um Convite Muito Especial</p>
+            <div class="endereco">🏘️ Condomínio Hollyhood 🏘️</div>
+            <p style="margin-top: 10px; font-size: 1em;">Você está convidado para celebrar a magia do Natal!</p>
+            <div class="decoracao" style="margin-top: 15px;">✨ 🎁 ❄️ 🎁 ✨</div>
+        </div>
 
-    <footer>
-        <p>&copy; 2024 Natal na Casa dos Dinhos - Condomínio Hollyhood | Criado com ❤️</p>
-    </footer>
+        <!-- Seção da Árvore -->
+        <div class="tree-section">
+            <h2>🎄 Árvore Interativa 🎄</h2>
 
-    <script>
-        // Criar neve caindo
-        function criarNeve() {
-            const snowContainer = document.getElementById('snowContainer');
-            const symbols = ['❄️', '❅', '❆', '✨'];
-            
-            function criarFloco() {
-                const floco = document.createElement('div');
-                floco.classList.add('snowflake');
-                floco.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                floco.style.left = Math.random() * window.innerWidth + 'px';
-                floco.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                floco.style.opacity = Math.random() * 0.5 + 0.5;
-                
-                snowContainer.appendChild(floco);
-                
-                setTimeout(() => floco.remove(), 15000);
-            }
-            
-            // Criar flocos periodicamente
-            setInterval(criarFloco, 300);
-        }
-
-        // Inicializar quando a página carrega
-        window.addEventListener('load', criarNeve);
-    </script>
-</body>
-</html>
-            </p>
-            
             <div class="tree-container">
-                <!-- Árvore Visual ELABORADA -->
+                <!-- Visualização da Árvore -->
                 <div class="tree-visual">
-                    <div class="tree">
-                        <div class="tree-star">⭐</div>
-                        <div class="tree-lights" id="treeLights"></div>
-                        <div class="ornament-area" id="ornamentArea">
-                            <!-- Enfeites serão adicionados aqui dinamicamente -->
-                        </div>
-                        <div class="tree-part"></div>
-                        <div class="tree-part"></div>
-                        <div class="tree-part"></div>
-                        <div class="tree-part"></div>
-                        <div class="tree-part"></div>
+                    <div class="tree-svg">
+                        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Estrela no topo -->
+                            <polygon points="100,10 106,30 128,30 110,42 116,62 100,50 84,62 90,42 72,30 94,30" fill="#ffdd00" class="ornament" style="filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));"/>
+
+                            <!-- Parte 1 da Árvore (superior) -->
+                            <polygon points="100,40 50,120 75,120 40,160 75,160 30,220 170,220 125,160 160,160 125,120 150,120" fill="#0a5f1f" style="filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));"/>
+
+                            <!-- Luzes na árvore -->
+                            <circle cx="80" cy="100" r="4" class="light light-red"/>
+                            <circle cx="120" cy="110" r="4" class="light light-blue"/>
+                            <circle cx="100" cy="130" r="4" class="light light-yellow"/>
+                            <circle cx="60" cy="160" r="4" class="light light-green"/>
+                            <circle cx="140" cy="170" r="4" class="light light-red"/>
+                            <circle cx="100" cy="190" r="4" class="light light-blue"/>
+
+                            <!-- Enfeites (bolas de Natal) -->
+                            <circle cx="90" cy="90" r="6" fill="#ff3333" class="ornament" style="cursor: pointer;"/>
+                            <circle cx="110" cy="100" r="6" fill="#0099ff" class="ornament" style="cursor: pointer;"/>
+                            <circle cx="100" cy="120" r="6" fill="#ffdd00" class="ornament" style="cursor: pointer;"/>
+                            <circle cx="70" cy="140" r="6" fill="#00dd00" class="ornament" style="cursor: pointer;"/>
+                            <circle cx="130" cy="150" r="6" fill="#ff3333" class="ornament" style="cursor: pointer;"/>
+                            <circle cx="95" cy="170" r="6" fill="#0099ff" class="ornament" style="cursor: pointer;"/>
+                            <circle cx="120" cy="180" r="6" fill="#ffdd00" class="ornament" style="cursor: pointer;"/>
+
+                            <!-- Tronco -->
+                            <rect x="85" y="220" width="30" height="50" fill="#6b3d1f" style="filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));"/>
+                            <rect x="87" y="222" width="26" height="46" fill="#8b5a2b"/>
+                        </svg>
                     </div>
-                    <div class="tree-trunk"></div>
                 </div>
 
-                <!-- Formulário para adicionar fotos -->
-                <div class="tree-form">
-                    <h3 style="color: #0f4c27; text-align: center;">Adicione sua Foto</h3>
-                    
+                <!-- Formulário -->
+                <div class="form-section">
+                    <h3>✨ Coloque sua Foto na Árvore ✨</h3>
+
                     <div class="form-group">
                         <label for="nameInput">Seu Nome:</label>
                         <input type="text" id="nameInput" placeholder="Digite seu nome..." maxlength="30">
@@ -323,84 +550,33 @@
 
                     <div class="form-group">
                         <label for="photoInput">Escolha uma Foto:</label>
-                        <input type="file" id="photoInput" accept="image/*">
+                        <input type="file" id="photoInput" accept="image/*" capture="environment">
                     </div>
 
-                    <div class="preview-foto" id="previewFoto">
-                        � Prévia da foto
+                    <div class="button-group">
+                        <button onclick="adicionarFoto()">🎄 Adicionar</button>
+                        <button onclick="limparFormulario()" style="background: linear-gradient(135deg, #666 0%, #999 100%); min-width: 80px;">Limpar</button>
                     </div>
 
-                    <button onclick="adicionarFotoArvore()">🎄 Adicionar à Árvore</button>
-
-                    <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #ffb300;">
-                        <p><strong>📸 Fotos Adicionadas:</strong></p>
-                        <div id="listaFotos" style="margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; max-width: 100%;">
+                    <div style="margin-top: 20px;">
+                        <p style="color: #0f4c27; font-weight: bold; margin-bottom: 10px;">📸 Fotos Adicionadas:</p>
+                        <div class="photos-list" id="photosList">
+                            <p style="color: #999; font-size: 0.9em; width: 100%; text-align: center; line-height: 60px;">Nenhuma foto ainda</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- LISTA DE PRESENÇA -->
-        <section id="presencaSection">
-            <h2>📋 Lista de Presença</h2>
-            <div class="form-group" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <input type="text" id="namePresencaInput" placeholder="Digite seu nome..." maxlength="50" style="flex: 1; min-width: 250px;">
-                <select id="categorySelect" style="min-width: 150px;">
-                    <option value="">Selecione uma categoria</option>
-                    <option value="Família">Família</option>
-                    <option value="Amigos">Amigos</option>
-                    <option value="Colegas">Colegas</option>
-                    <option value="Vizinhos">Vizinhos</option>
-                    <option value="Outros">Outros</option>
-                </select>
-                <button onclick="adicionarPresenca()">✅ Confirmar Presença</button>
-            </div>
-            <div class="attendees-list" id="attendeesList"></div>
-            <p style="margin-top: 20px; color: #0f4c27; font-weight: bold; text-align: center; font-size: 1.3em;">
-                👥 Total de Presentes: <span id="countAttendees">0</span>
-            </p>
-        </section>
-
-
-
-        <!-- AMIGO SECRETO -->
-        <section id="amigoSecretoSection">
-            <h2>🎁 Amigo Secreto</h2>
-            <div class="secret-friend-container">
-                <div class="secret-friend-form">
-                    <h3 style="color: #c41e3a; margin-bottom: 15px;">Adicione os Participantes</h3>
-                    <input type="text" id="amigoInput" placeholder="Digite o nome do participante..." maxlength="50">
-                    <button onclick="adicionarAmigoSecrato()">Adicionar</button>
-                    
-                    <div id="amigoList" style="margin-top: 20px;">
-                        <h4 style="color: #0f4c27; margin-bottom: 10px;">Participantes:</h4>
-                        <div id="listaAmigos" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
-                    </div>
-                    
-                    <button onclick="sortearAmigoSecreto()" style="margin-top: 20px; background: linear-gradient(135deg, #0f4c27 0%, #1a6e3e 100%); font-size: 1.2em;">
-                        🎲 SORTEIO DO AMIGO SECRETO!
-                    </button>
-                </div>
-
-                <div class="result-box" id="resultBox">
-                    <div class="result-text">🎉 Clique no botão de sorteio!</div>
-                    <div class="result-name" id="resultName">---</div>
-                </div>
-            </div>
-        </section>
-
-
+        </div>
     </div>
 
-    <!-- Texto escondido: NOEL -->
-    <div style="position: absolute; color: white; opacity: 0.01; font-size: 0.1px;">NOEL</div>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Natal na Casa dos Dinhos - Condomínio Hollyhood | Criado com ❤️</p>
+        <p>🎄 Que este Natal seja repleto de alegria, amor e magia! 🎄</p>
     </footer>
 
     <script>
+        let fotosAdicionadas = [];
+
         // Criar neve caindo
         function criarNeve() {
             const snowContainer = document.getElementById('snowContainer');
@@ -416,15 +592,145 @@
                 
                 snowContainer.appendChild(floco);
                 
-                setTimeout(() => floco.remove(), 15000);
+                setTimeout(() => floco.remove(), 20000);
             }
             
             // Criar flocos periodicamente
             setInterval(criarFloco, 300);
+            
+            // Criar alguns flocos iniciais
+            for (let i = 0; i < 20; i++) {
+                criarFloco();
+            }
         }
 
-        // Inicializar quando a página carrega
-        window.addEventListener('load', criarNeve);
+        // Adicionar foto
+        function adicionarFoto() {
+            const nameInput = document.getElementById('nameInput');
+            const photoInput = document.getElementById('photoInput');
+            const name = nameInput.value.trim();
+
+            if (name === '') {
+                alert('⚠️ Digite seu nome!');
+                return;
+            }
+
+            if (photoInput.files.length === 0) {
+                alert('⚠️ Escolha uma foto!');
+                return;
+            }
+
+            const file = photoInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const fotoData = {
+                    name: name,
+                    image: e.target.result,
+                    id: Date.now()
+                };
+
+                fotosAdicionadas.push(fotoData);
+                atualizarFotos();
+                limparFormulario();
+                celebrar();
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        // Atualizar lista de fotos
+        function atualizarFotos() {
+            const photosList = document.getElementById('photosList');
+            
+            if (fotosAdicionadas.length === 0) {
+                photosList.innerHTML = '<p style="color: #999; font-size: 0.9em; width: 100%; text-align: center; line-height: 60px;">Nenhuma foto ainda</p>';
+                return;
+            }
+
+            photosList.innerHTML = '';
+            fotosAdicionadas.forEach((foto, index) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.style.backgroundImage = `url('${foto.image}')`;
+                photoItem.title = foto.name;
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-btn';
+                removeBtn.textContent = '×';
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    removerFoto(index);
+                };
+                
+                photoItem.appendChild(removeBtn);
+                photosList.appendChild(photoItem);
+            });
+        }
+
+        // Remover foto
+        function removerFoto(index) {
+            fotosAdicionadas.splice(index, 1);
+            atualizarFotos();
+        }
+
+        // Limpar formulário
+        function limparFormulario() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('photoInput').value = '';
+        }
+
+        // Celebrar
+        function celebrar() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const celebration = document.createElement('div');
+                    celebration.className = 'celebration';
+                    celebration.textContent = ['🎉', '✨', '🎄', '🎁'][Math.floor(Math.random() * 4)];
+                    celebration.style.left = Math.random() * window.innerWidth + 'px';
+                    celebration.style.top = '50%';
+                    document.body.appendChild(celebration);
+                    
+                    setTimeout(() => celebration.remove(), 600);
+                }, i * 100);
+            }
+        }
+
+        // Adicionar interatividade aos enfeites da árvore
+        function adicionarInteratividadeEnfeites() {
+            const ornaments = document.querySelectorAll('.ornament');
+            ornaments.forEach(ornament => {
+                ornament.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'click-bounce 0.3s ease';
+                    }, 10);
+                    celebrar();
+                });
+            });
+        }
+
+        // Inicialização
+        window.addEventListener('load', () => {
+            criarNeve();
+            adicionarInteratividadeEnfeites();
+        });
+
+        // Entrada com Enter
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nameInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    document.getElementById('photoInput').focus();
+                }
+            });
+
+            document.getElementById('photoInput').addEventListener('change', () => {
+                if (document.getElementById('nameInput').value.trim() !== '' && 
+                    document.getElementById('photoInput').files.length > 0) {
+                    adicionarFoto();
+                }
+            });
+        });
     </script>
 </body>
 </html>
