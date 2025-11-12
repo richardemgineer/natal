@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>natal na casa da tia carmem</title>
+    <title>🎄 Natal na Casa dos Dinhos - Condomínio Hollyhood</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #0f4c27 0%, #1a6e3e 50%, #c41e3a 100%);
             min-height: 199vh;
             color: #333;
@@ -42,31 +42,44 @@
             animation: snowfall linear infinite;
         }
 
-        header {
-            background: rgba(20, 20, 60, 0.9);
+        /* Convite Estilo */
+        .convite-header {
+            background: rgba(20, 20, 60, 0.95);
             color: #fff;
             text-align: center;
-            padding: 40px 20px;
-            border-bottom: 5px solid #c41e3a;
+            padding: 60px 20px;
+            border-bottom: 8px solid #c41e3a;
             position: relative;
             overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
         }
 
-        header h1 {
+        .convite-header h1 {
             font-size: 3.5em;
-            margin: 10px 0;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
             animation: pulse 2s infinite;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .convite-header .subtitulo {
+            font-size: 2em;
+            color: #ffeb3b;
+            margin: 15px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .convite-header .endereco {
+            font-size: 1.2em;
+            color: #87CEEB;
+            margin: 10px 0;
+            font-style: italic;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
-        }
-
-        header p {
-            font-size: 1.3em;
-            color: #ffeb3b;
         }
 
         .container {
@@ -76,12 +89,12 @@
         }
 
         section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 25px 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 3px solid #c41e3a;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border: 4px solid #c41e3a;
             position: relative;
             overflow: hidden;
         }
@@ -109,28 +122,150 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Formulário de Presença */
-        .form-group {
-            margin: 20px 0;
+        /* Árvore Interativa */
+        .tree-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+            align-items: start;
+        }
+
+        .tree-visual {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+            background: linear-gradient(to bottom, #e8f4f8 0%, #f0f8f0 100%);
+            border-radius: 15px;
+            border: 3px dashed #0f4c27;
+            padding: 20px;
+            position: relative;
+        }
+
+        .tree {
+            position: relative;
+            width: 300px;
+            height: 400px;
+        }
+
+        .tree-part {
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0f4c27 0%, #1a6e3e 100%);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 38%, 100% 100%, 0 100%, 18% 38%, 0% 38%);
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .tree-part:nth-child(1) {
+            width: 280px;
+            height: 120px;
+        }
+
+        .tree-part:nth-child(2) {
+            width: 240px;
+            height: 100px;
+            margin-top: -40px;
+        }
+
+        .tree-part:nth-child(3) {
+            width: 200px;
+            height: 80px;
+            margin-top: -30px;
+        }
+
+        .tree-trunk {
+            width: 40px;
+            height: 60px;
+            background: #8B4513;
+            margin: 10px auto 0;
+            border-radius: 5px;
+        }
+
+        .tree-star {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            animation: star-shine 1.5s ease-in-out infinite;
+        }
+
+        @keyframes star-shine {
+            0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateX(-50%) scale(1.2); }
+        }
+
+        .ornament-area {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .photo-ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 4px solid gold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .photo-ornament:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .photo-ornament.empty {
+            background: radial-gradient(circle at center, #ffeb3b 0%, #ffc107 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .tree-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
             gap: 10px;
-            flex-wrap: wrap;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #0f4c27;
+            font-size: 1.1em;
         }
 
         input[type="text"],
+        input[type="file"],
         select {
             padding: 12px 15px;
             border: 2px solid #0f4c27;
             border-radius: 8px;
             font-size: 1em;
-            flex: 1;
-            min-width: 250px;
             transition: all 0.3s ease;
         }
 
         input[type="text"]:focus,
+        input[type="file"]:focus,
         select:focus {
             outline: none;
             border-color: #c41e3a;
@@ -138,8 +273,12 @@
             transform: scale(1.02);
         }
 
+        input[type="file"] {
+            padding: 10px;
+        }
+
         button {
-            padding: 12px 30px;
+            padding: 14px 30px;
             background: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
             color: white;
             border: none;
@@ -158,6 +297,24 @@
 
         button:active {
             transform: translateY(-1px);
+        }
+
+        .preview-foto {
+            width: 100%;
+            height: 150px;
+            border: 2px dashed #0f4c27;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .preview-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Lista de Presença */
@@ -313,12 +470,20 @@
 
         /* Responsivo */
         @media (max-width: 768px) {
-            header h1 {
+            .convite-header h1 {
                 font-size: 2.2em;
+            }
+
+            .convite-header .subtitulo {
+                font-size: 1.5em;
             }
 
             section h2 {
                 font-size: 1.8em;
+            }
+
+            .tree-container {
+                grid-template-columns: 1fr;
             }
 
             .secret-friend-container {
@@ -327,7 +492,16 @@
 
             input[type="text"],
             select {
-                min-width: 100%;
+                width: 100%;
+            }
+
+            .tree-visual {
+                min-height: 400px;
+            }
+
+            .tree {
+                width: 200px;
+                height: 300px;
             }
         }
 
@@ -335,7 +509,7 @@
             background: rgba(20, 20, 60, 0.9);
             color: #fff;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             margin-top: 50px;
             border-top: 5px solid #c41e3a;
             font-size: 1.2em;
@@ -351,6 +525,13 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+
+        .convite-decoracao {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+            letter-spacing: 10px;
+        }
     </style>
 </head>
 <body>
@@ -364,29 +545,88 @@
     <div class="floating-emoji" style="top: 70%; right: 10%; animation-delay: 1s;">🔔</div>
     <div class="floating-emoji" style="top: 20%; right: 5%; animation-delay: 3s;">❄️</div>
 
-    <header>
-        <h1>🎄 FESTA DE NATAL ESPECIAL 🎄</h1>
-        <p>✨ Bem-vindo ao nosso evento natativo! ✨</p>
-    </header>
+    <!-- CONVITE NATALINO -->
+    <div class="convite-header">
+        <div class="convite-decoracao">🎄 ✨ 🎅 ✨ 🎄</div>
+        <h1>Natal na Casa dos Dinhos</h1>
+        <div class="subtitulo">Um Convite Muito Especial</div>
+        <div class="endereco">🏘️ Condomínio Hollyhood 🏘️</div>
+        <p style="margin-top: 20px; font-size: 1.1em;">
+            Você está convidado para celebrar a magia do Natal!
+        </p>
+        <div class="convite-decoracao" style="margin-top: 20px;">✨ 🎁 ❄️ 🎁 ✨</div>
+    </div>
 
     <div class="container">
+        <!-- ÁRVORE DE NATAL INTERATIVA -->
+        <section id="treeSection">
+            <h2>🎄 Árvore de Natal Interativa</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 1.1em;">
+                Adicione sua foto à árvore e celebre junto com a gente!
+            </p>
+            
+            <div class="tree-container">
+                <!-- Árvore Visual -->
+                <div class="tree-visual">
+                    <div class="tree">
+                        <div class="tree-star">⭐</div>
+                        <div class="ornament-area" id="ornamentArea">
+                            <!-- Enfeites serão adicionados aqui dinamicamente -->
+                        </div>
+                        <div class="tree-part"></div>
+                        <div class="tree-part"></div>
+                        <div class="tree-part"></div>
+                    </div>
+                    <div class="tree-trunk"></div>
+                </div>
+
+                <!-- Formulário para adicionar fotos -->
+                <div class="tree-form">
+                    <h3 style="color: #0f4c27; text-align: center;">Adicione sua Foto</h3>
+                    
+                    <div class="form-group">
+                        <label for="nameInput">Seu Nome:</label>
+                        <input type="text" id="nameInput" placeholder="Digite seu nome..." maxlength="30">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photoInput">Escolha uma Foto:</label>
+                        <input type="file" id="photoInput" accept="image/*">
+                    </div>
+
+                    <div class="preview-foto" id="previewFoto">
+                        � Prévia da foto
+                    </div>
+
+                    <button onclick="adicionarFotoArvore()">🎄 Adicionar à Árvore</button>
+
+                    <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #ffb300;">
+                        <p><strong>📸 Fotos Adicionadas:</strong></p>
+                        <div id="listaFotos" style="margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- LISTA DE PRESENÇA -->
         <section id="presencaSection">
-            <h2>📋 confirma ai meu fii</h2>
-            <div class="form-group">
-                <input type="text" id="nameInput" placeholder="Digite seu nome aqui..." maxlength="50">
-                <select id="categorySelect">
+            <h2>📋 Lista de Presença</h2>
+            <div class="form-group" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="namePresencaInput" placeholder="Digite seu nome..." maxlength="50" style="flex: 1; min-width: 250px;">
+                <select id="categorySelect" style="min-width: 150px;">
                     <option value="">Selecione uma categoria</option>
                     <option value="Família">Família</option>
                     <option value="Amigos">Amigos</option>
                     <option value="Colegas">Colegas</option>
+                    <option value="Vizinhos">Vizinhos</option>
                     <option value="Outros">Outros</option>
                 </select>
-                <button onclick="adicionarPresenca()">✅ Adicionar à Lista</button>
+                <button onclick="adicionarPresenca()">✅ Confirmar Presença</button>
             </div>
             <div class="attendees-list" id="attendeesList"></div>
-            <p style="margin-top: 20px; color: #0f4c27; font-weight: bold;">
-                👥 Total de presentes: <span id="countAttendees">0</span>
+            <p style="margin-top: 20px; color: #0f4c27; font-weight: bold; text-align: center; font-size: 1.3em;">
+                👥 Total de Presentes: <span id="countAttendees">0</span>
             </p>
         </section>
 
@@ -507,23 +747,17 @@
                 </div>
 
                 <div class="menu-item">
-                    <h3>🔴 Jogo de Cores</h3>
-                    <p>Clique nas cores que aparecem! Quanto mais rápido, melhor!</p>
-                    <div id="colorGame" style="display: none; margin-top: 15px; height: 150px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-                        <div class="color-box" onclick="checkColor(this, 'red')" style="background: red; border-radius: 8px; cursor: pointer;"></div>
-                        <div class="color-box" onclick="checkColor(this, 'green')" style="background: green; border-radius: 8px; cursor: pointer;"></div>
-                        <div class="color-box" onclick="checkColor(this, 'blue')" style="background: blue; border-radius: 8px; cursor: pointer;"></div>
-                        <div class="color-box" onclick="checkColor(this, 'yellow')" style="background: gold; border-radius: 8px; cursor: pointer;"></div>
-                    </div>
-                    <button onclick="iniciarJogoCores()" style="width: 100%; margin-top: 10px;">
-                        🎮 Iniciar Jogo
-                    </button>
-                </div>
-
-                <div class="menu-item">
                     <h3>🎵 Pausa Cantada</h3>
                     <p><strong>Música:</strong> "Noite Feliz, noite feliz, tudo repousa em paz..." 🎶</p>
                     <p style="margin-top: 10px; font-style: italic;">Cante junto com todos os presentes!</p>
+                </div>
+
+                <div class="menu-item">
+                    <h3>🎮 Jogo Interativo</h3>
+                    <p>Teste sua velocidade com nossos jogos especiais de Natal!</p>
+                    <button onclick="iniciarJogoCores()" style="width: 100%; margin-top: 10px;">
+                        Jogar Agora
+                    </button>
                 </div>
 
                 <div class="menu-item">
@@ -539,12 +773,9 @@
     <div style="position: absolute; color: white; opacity: 0.01; font-size: 0.1px;">NOEL</div>
 
     <footer>
-        <p>🎄 Que esta festa seja repleta de alegria, amor e muita magia!
-            by ingrid!
-            by shan!
-           anfitriã ,tia carmem 🎄</p>
-        <p style="margin-top: 15px; font-size: 0.9em;">Desenvolvido com ❤️ para tornar seu Natal especial
-            richard_dev</p>
+        <p>🎄 Que esta festa seja repleta de alegria, amor e muita magia! 🎄</p>
+        <p style="margin-top: 15px; font-size: 0.9em;">
+            Condomínio Hollyhood • Desenvolvido com ❤️ para tornar seu Natal especial
         </p>
     </footer>
 
@@ -553,10 +784,108 @@
         let presencas = [];
         let participantesAmigoSecreto = [];
         let amigoSorteado = null;
+        let fotosArvore = [];
+
+        // ========== ÁRVORE DE NATAL ==========
+        function adicionarFotoArvore() {
+            const nameInput = document.getElementById('nameInput');
+            const photoInput = document.getElementById('photoInput');
+            const name = nameInput.value.trim();
+
+            if (name === '') {
+                alert('⚠️ Digite seu nome!');
+                return;
+            }
+
+            if (photoInput.files.length === 0) {
+                alert('⚠️ Escolha uma foto!');
+                return;
+            }
+
+            const file = photoInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const fotoData = {
+                    name: name,
+                    image: e.target.result,
+                    id: Date.now()
+                };
+
+                fotosArvore.push(fotoData);
+                nameInput.value = '';
+                photoInput.value = '';
+                document.getElementById('previewFoto').innerHTML = '📷 Prévia da foto';
+                atualizarArvore();
+                celebrar();
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function atualizarArvore() {
+            const ornamentArea = document.getElementById('ornamentArea');
+            const listaFotos = document.getElementById('listaFotos');
+            
+            ornamentArea.innerHTML = '';
+            listaFotos.innerHTML = '';
+
+            const posicoes = [
+                { top: '10%', left: '30%' },
+                { top: '20%', left: '50%' },
+                { top: '15%', left: '70%' },
+                { top: '35%', left: '20%' },
+                { top: '40%', left: '50%' },
+                { top: '35%', left: '80%' },
+                { top: '55%', left: '35%' },
+                { top: '60%', left: '60%' },
+                { top: '55%', left: '75%' },
+                { top: '75%', left: '45%' },
+                { top: '75%', left: '65%' }
+            ];
+
+            fotosArvore.forEach((foto, index) => {
+                const posicao = posicoes[index % posicoes.length];
+                const ornament = document.createElement('div');
+                ornament.className = 'photo-ornament';
+                ornament.style.backgroundImage = `url('${foto.image}')`;
+                ornament.style.top = posicao.top;
+                ornament.style.left = posicao.left;
+                ornament.title = foto.name;
+                ornament.onclick = () => removerFotoArvore(foto.id);
+                ornamentArea.appendChild(ornament);
+
+                // Lista de fotos
+                const fotoTag = document.createElement('div');
+                fotoTag.style.cssText = 'width: 50px; height: 50px; border-radius: 50%; border: 3px solid gold; background-size: cover; background-position: center; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; font-size: 0.8em; text-align: center; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);';
+                fotoTag.style.backgroundImage = `url('${foto.image}')`;
+                fotoTag.title = foto.name;
+                fotoTag.onmouseover = () => fotoTag.style.transform = 'scale(1.1)';
+                fotoTag.onmouseout = () => fotoTag.style.transform = 'scale(1)';
+                fotoTag.onclick = () => removerFotoArvore(foto.id);
+                listaFotos.appendChild(fotoTag);
+            });
+        }
+
+        function removerFotoArvore(id) {
+            fotosArvore = fotosArvore.filter(f => f.id !== id);
+            atualizarArvore();
+        }
+
+        // Prévia de foto
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewFoto').innerHTML = `<img src="${e.target.result}">`;
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
 
         // ========== LISTA DE PRESENÇA ==========
         function adicionarPresenca() {
-            const nameInput = document.getElementById('nameInput');
+            const nameInput = document.getElementById('namePresencaInput');
             const categorySelect = document.getElementById('categorySelect');
             const name = nameInput.value.trim();
             const category = categorySelect.value;
@@ -570,8 +899,6 @@
             nameInput.value = '';
             categorySelect.value = '';
             atualizarListaPresencas();
-
-            // Celebração
             celebrar();
         }
 
@@ -651,9 +978,6 @@
 
             setTimeout(() => {
                 amigoSorteado = participantesAmigoSecreto[Math.floor(Math.random() * participantesAmigoSecreto.length)];
-                const resultName = document.getElementById('resultName');
-                resultName.textContent = amigoSorteado;
-                resultName.classList.add('hidden-result');
                 resultBox.innerHTML = `
                     <div class="result-text">🎉 Seu Amigo Secreto é:</div>
                     <div class="result-name hidden-result" onclick="revelarResultado(this)">${amigoSorteado}</div>
@@ -683,14 +1007,7 @@
         }
 
         function iniciarJogoCores() {
-            alert('🎮 Jogo iniciado! Clique nas cores em sequência!');
-        }
-
-        function checkColor(element, color) {
-            element.style.opacity = '0.5';
-            setTimeout(() => {
-                element.style.opacity = '1';
-            }, 200);
+            alert('🎮 Jogo iniciado! Teste sua velocidade!');
         }
 
         // ========== NEVE CAINDO ==========
@@ -729,9 +1046,13 @@
             criarNeve();
         });
 
-        // Permitir Enter para adicionar presença
+        // Permitir Enter
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('nameInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') adicionarFotoArvore();
+            });
+
+            document.getElementById('namePresencaInput').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') adicionarPresenca();
             });
 
